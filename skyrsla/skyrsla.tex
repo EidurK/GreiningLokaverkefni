@@ -1,0 +1,87 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[top=0.9in, bottom=1in, left=1.5in, right=1.5in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[icelandic]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[sc]{mathpazo}
+\usepackage[parfill]{parskip}
+\renewcommand{\baselinestretch}{1.4}
+\usepackage{booktabs,tabularx}
+\usepackage{multirow}
+\usepackage{enumerate}
+\usepackage{adjustbox}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usepackage{nicefrac}
+\usepackage{changepage}
+\usetikzlibrary{arrows, positioning, calc, graphs}
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{minted}
+\usemintedstyle{manni}
+\title{Greining Reiknirita - Lokaverkefni}
+\author{Ragnar Björn Ingvarsson, rbi3 \\ Eiður Kristinsson, ???}
+\tikzset{->, >=stealth', shorten >=1pt, node distance=2cm,thick, main node/.style={circle,draw,minimum size=3em}}
+
+\begin{document}
+\renewcommand\thepage{}
+
+	\maketitle
+
+	\newpage
+	\setcounter{page}{1}
+	\renewcommand\thepage{\arabic{page}}
+
+	\section{Inngangur}
+
+	Verkefnið snérist aðallega um að vinna úr gögnum frá götukerfi Reykjavíkur 
+	og finna t.d. stystu leiðir í kring um borgina, og þar með finna bestu 
+	lausn á staðsetningu $k$ hleðslustöðva fyrir bíla til að besta fjarlægð 
+	sem þarf að keyra til hleðslustöðvar frá öllum stöðum á höfuðborgarsvæðinu. 
+
+	Fyrir þetta verkefni kláruðum við liði $1-7$, sem fara frá því að lesa inn 
+	gögnin, útfæra Dijkstra og $A\star$ reikniritið til að bera saman hvort 
+	sé betra, og notfæra okkur þau svo í að finna bestu staðsetningar fyrir 
+	2-10 hleðslustöðvar með gráðugu reikniriti.
+
+	\section{Aðferðir}
+
+	Til að byrja með notuðum við \texttt{pandas} safnið til að lesa inn 
+	gögnin og vinnum svo úr þeim örlítið til að gera meðhöndlun léttari. Við 
+	búum til tvær \texttt{dictionaries}, \texttt{node\_dict} og 
+	\texttt{adjacency\_list} sem halda utan um hvern hnút fyrir sig með 
+	\texttt{osmid} sem lykil, og lista af leggjum sem tengjast hverjum hnút.
+
+	Til að reikna stystu vegi útfærðum við tvö reiknirit; Dijkstra og $A*$. 
+	Útfærsla Dijkstra notast við \texttt{heapdict} sem er töluvert betra 
+	heldur en \texttt{heapq} fyrir Dijkstra því hægt er að lækka núverandi 
+	lægstu fjarlægð hnútar í stað þess að þurfa að bæta nýrri færslu við, og 
+	einnig er það bara almennt hraðara. Reikniritið skilar svo fjarlægðum 
+	og fyrri leggjum fyrir alla hnúta. ----vantar um astar----
+
+	Við prófuðum svo föllin og tókum tímann á báðum fyrir $5$ hnúta valda af 
+	handahófi og teiknuðum út niðurstöður beggja með \texttt{matplotlib} og 
+	\texttt{contextily} til að bera saman.
+
+	Síðan var notað gráðugt reiknirit til að reikna bestu staðsetningar 
+	hleðslustöðvanna, sem virkar svo að það lætur alla hnúta merkta með 
+	\texttt{primary} koma til greina fyrir hleðslustöðvar og svo, fyrir 
+	hvert val á hleðslustöð var reiknað hversu mikið fjarlægðarkostnaður 
+	minnkaði fyrir hvern mögulegan hnút. Síðan var hnútnum bætt við í lista 
+	sem minnkaði mest heildarkostnað. Þessar niðurstöður voru einnig útfærðar 
+	með \texttt{matplotlib} og \texttt{contextily}.
+
+	\section{Niðurstöður}
+
+	ætla að bíða með þennan kafla líklega
+
+	\section{Samantekt og næstu skref}
+
+	þennan líka í bili
+
+
+\end{document}
